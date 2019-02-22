@@ -23,14 +23,15 @@ private:
     static Mesh createXORMesh() {
         //Replace this with Layer class to handle connection logic
         Mesh mesh = Mesh();
-        Neuron input1 = Neuron(std::vector<Neuron>());
-        Neuron input2 = Neuron(std::vector<Neuron>());
-        std::vector<Neuron> hiddenInputs = std::vector<Neuron>();
+        std::vector<Neuron> inInputs;
+        Neuron input1 = Neuron(inInputs);
+        Neuron input2 = Neuron(inInputs);
+        std::vector<Neuron> hiddenInputs;
         hiddenInputs.push_back(input1);
         hiddenInputs.push_back(input2);
         Neuron hidden1 = Neuron(hiddenInputs);
         Neuron hidden2 = Neuron(hiddenInputs);
-        std::vector<Neuron> outputInputs = std::vector<Neuron>();
+        std::vector<Neuron> outputInputs;
         outputInputs.push_back(hidden1);
         outputInputs.push_back(hidden2);
         Neuron output = Neuron(outputInputs);

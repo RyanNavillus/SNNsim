@@ -8,3 +8,7 @@
 
 #include "Neuron.hpp"
 
+Neuron::Neuron(std::vector<Neuron> inputs) {
+    
+}
+
