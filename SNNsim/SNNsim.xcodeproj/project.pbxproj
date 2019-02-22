@@ -18,6 +18,7 @@
 		6EBA6B91221F361C00B4A960 /* Axon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B8F221F361C00B4A960 /* Axon.cpp */; };
 		6EBA6B96221F370200B4A960 /* EnergyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B94221F370200B4A960 /* EnergyTracker.cpp */; };
 		6EBA6B9A221F5A7100B4A960 /* NetworkFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B98221F5A7100B4A960 /* NetworkFile.cpp */; };
+		6EBA6B9F221FE28300B4A960 /* SpikeTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -55,6 +56,10 @@
 		6EBA6B95221F370200B4A960 /* EnergyTracker.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = EnergyTracker.hpp; sourceTree = "<group>"; };
 		6EBA6B98221F5A7100B4A960 /* NetworkFile.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkFile.cpp; sourceTree = "<group>"; };
 		6EBA6B99221F5A7100B4A960 /* NetworkFile.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = NetworkFile.hpp; sourceTree = "<group>"; };
+		6EBA6B9C221FE0C200B4A960 /* XORNetwork.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = XORNetwork.txt; sourceTree = "<group>"; };
+		6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpikeTrain.cpp; sourceTree = "<group>"; };
+		6EBA6B9E221FE28300B4A960 /* SpikeTrain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpikeTrain.hpp; sourceTree = "<group>"; };
+		6EBA6BA0221FE5E000B4A960 /* Network Format.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Network Format.md"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +100,7 @@
 				6EBA6B94221F370200B4A960 /* EnergyTracker.cpp */,
 				6EBA6B95221F370200B4A960 /* EnergyTracker.hpp */,
 				6EBA6B93221F36F000B4A960 /* Model */,
+				6EBA6B9B221FE09300B4A960 /* Samples */,
 			);
 			path = SNNsim;
 			sourceTree = "<group>";
@@ -116,8 +122,19 @@
 				6EBA6B8A221F2E2C00B4A960 /* InSynapse.hpp */,
 				6EBA6B8C221F2E3700B4A960 /* OutSynapse.cpp */,
 				6EBA6B8D221F2E3800B4A960 /* OutSynapse.hpp */,
+				6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */,
+				6EBA6B9E221FE28300B4A960 /* SpikeTrain.hpp */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6EBA6B9B221FE09300B4A960 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				6EBA6B9C221FE0C200B4A960 /* XORNetwork.txt */,
+				6EBA6BA0221FE5E000B4A960 /* Network Format.md */,
+			);
+			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,6 +198,7 @@
 				6EBA6B7F221F2E0400B4A960 /* Core.cpp in Sources */,
 				6EBA6B8E221F2E3800B4A960 /* OutSynapse.cpp in Sources */,
 				6EBA6B85221F2E1C00B4A960 /* Synapse.cpp in Sources */,
+				6EBA6B9F221FE28300B4A960 /* SpikeTrain.cpp in Sources */,
 				6EBA6B7C221F2DFB00B4A960 /* Mesh.cpp in Sources */,
 				6EBA6B82221F2E1300B4A960 /* Neuron.cpp in Sources */,
 				6EBA6B88221F2E2200B4A960 /* Parser.cpp in Sources */,

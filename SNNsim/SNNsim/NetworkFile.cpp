@@ -7,3 +7,6 @@
 //
 
 #include "NetworkFile.hpp"
+
+NetworkFile::NetworkFile(FILE * file) {
+}

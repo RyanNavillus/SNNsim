@@ -9,6 +9,6 @@
 #include "Parser.hpp"
 #include <string>
 
-Mesh Parser::parse(NetworkFile file) {
+/*Mesh Parser::parse(NetworkFile file) {
     return Mesh(); // Placeholder
-}
+}*/

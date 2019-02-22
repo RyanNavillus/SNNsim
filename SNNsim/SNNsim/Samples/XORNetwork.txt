@@ -1,0 +1,6 @@
+# Simple 2 variable XOR network definition
+
+# Input: input layer
+Input(2)
+Dense(2, 1, 0)
+Output(1)

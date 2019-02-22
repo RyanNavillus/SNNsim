@@ -18,8 +18,8 @@ class OutSynapse;
 
 class Neuron {
 public:
+    Neuron(std::vector<Neuron> inputs);
     int threshold;
-    
     bool evaluatePotential();
 private:
     std::vector<InSynapse> inputSynapses;

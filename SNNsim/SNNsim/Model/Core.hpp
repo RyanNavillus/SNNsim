@@ -18,10 +18,9 @@ class Axon;
 class Neuron;
 
 class Core {
-private:
-    std::vector<Neuron> neurons;
 public:
     int timestep;
+    std::vector<Neuron> neurons;
     std::vector<Axon> inputAxons;
     std::vector<Axon> outputAxons;
     

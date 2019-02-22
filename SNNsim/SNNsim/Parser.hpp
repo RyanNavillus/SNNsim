@@ -14,7 +14,35 @@
 #include "NetworkFile.hpp"
 
 class Parser {
-    Mesh parse(NetworkFile file);
+public:
+    static Mesh parse(NetworkFile file) {
+        
+        return createXORMesh();
+    }
+private:
+    static Mesh createXORMesh() {
+        //Replace this with Layer class to handle connection logic
+        Mesh mesh = Mesh();
+        Neuron input1 = Neuron(std::vector<Neuron>());
+        Neuron input2 = Neuron(std::vector<Neuron>());
+        std::vector<Neuron> hiddenInputs = std::vector<Neuron>();
+        hiddenInputs.push_back(input1);
+        hiddenInputs.push_back(input2);
+        Neuron hidden1 = Neuron(hiddenInputs);
+        Neuron hidden2 = Neuron(hiddenInputs);
+        std::vector<Neuron> outputInputs = std::vector<Neuron>();
+        outputInputs.push_back(hidden1);
+        outputInputs.push_back(hidden2);
+        Neuron output = Neuron(outputInputs);
+        
+        mesh.cores[0].neurons.push_back(input1);
+        mesh.cores[0].neurons.push_back(input2);
+        mesh.cores[0].neurons.push_back(hidden1);
+        mesh.cores[0].neurons.push_back(hidden2);
+        mesh.cores[0].neurons.push_back(output);
+
+        return mesh;
+    }
 };
 
 #endif /* Parser_hpp */

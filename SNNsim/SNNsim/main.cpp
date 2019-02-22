@@ -7,11 +7,16 @@
 //
 
 #include <iostream>
+#include "Parser.hpp"
+#include "NetworkFile.hpp"
+#include "Mesh.hpp"
 
 int main(int argc, const char * argv[]) {
+    FILE * file;
+    file = fopen ("Samples/XORNetwork.txt" , "r");
+    NetworkFile networkFile(file);
+    Mesh mesh = Parser::parse(networkFile);
     std::cout << "Hello, World!\n";
     return 0;
 }
-
-void f(int *p);
 

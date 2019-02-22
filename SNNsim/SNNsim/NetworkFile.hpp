@@ -12,7 +12,8 @@
 #include <stdio.h>
 
 class NetworkFile {
-    NetworkFile(FILE file);
+public:
+    NetworkFile(FILE * file);
 };
 
 #endif /* NetworkFile_hpp */
