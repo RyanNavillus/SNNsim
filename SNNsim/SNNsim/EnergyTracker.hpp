@@ -12,6 +12,18 @@
 #include <stdio.h>
 
 class EnergyTracker {
+public:
+    static EnergyTracker& sharedInstance() {
+        static EnergyTracker instance;
+        return instance;
+    }
+private:
+    // Privately declare constructor for sharedInstance method
+    EnergyTracker(){};
+public:
+    // Publicly delete constructors to avoid duplication
+    EnergyTracker(EnergyTracker const&) = delete;
+    void operator = (EnergyTracker const&) = delete;
     
 };
 

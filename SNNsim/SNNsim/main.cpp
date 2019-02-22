@@ -9,8 +9,6 @@
 #include <iostream>
 
 int main(int argc, const char * argv[]) {
-    std::string test1;
-    int p = 8;
     std::cout << "Hello, World!\n";
     return 0;
 }
