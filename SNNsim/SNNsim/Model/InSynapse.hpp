@@ -20,6 +20,7 @@ class Neuron;
 class InSynapse: public Synapse {
     Axon *source;
     Neuron *destination;
+    double weight;
 };
 
 #endif /* InSynapse_hpp */

@@ -8,7 +8,18 @@
 
 #include "Neuron.hpp"
 
-Neuron::Neuron(std::vector<Neuron> inputs) {
+int potential;
+int WPLACEHOLDER = 0;
+int SYNAPSESPIKEPLACEHOLDER = 1;
+
+Neuron::Neuron() {
     
+}
+
+bool Neuron::evaluatePotential() {
+    for (int i = 0; i < inputSynapses.size(); i++) {
+        potential += WPLACEHOLDER * SYNAPSESPIKEPLACEHOLDER;
+    }
+    return false;
 }
 

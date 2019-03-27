@@ -18,7 +18,7 @@ class OutSynapse;
 
 class Neuron {
 public:
-    Neuron(std::vector<Neuron> inputs);
+    Neuron();   // Create empty neuron. Layer construction will handle weights
     int threshold;
     bool evaluatePotential();
 private:

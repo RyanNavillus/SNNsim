@@ -12,11 +12,12 @@
 #include "Mesh.hpp"
 
 int main(int argc, const char * argv[]) {
+    std::cout << "Hello, World!\n";
+
     FILE * file;
     file = fopen ("Samples/XORNetwork.txt" , "r");
     NetworkFile networkFile(file);
     Mesh mesh = Parser::parse(networkFile);
-    std::cout << "Hello, World!\n";
     return 0;
 }
 

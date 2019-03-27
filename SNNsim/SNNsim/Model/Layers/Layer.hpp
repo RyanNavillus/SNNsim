@@ -10,9 +10,12 @@
 #define Layer_hpp
 
 #include <stdio.h>
+#include "../Neuron.hpp"
+
+class Neuron;
 
 class Layer {
-    
+    std::vector<Neuron> neurons;
 };
 
 #endif /* Layer_hpp */
