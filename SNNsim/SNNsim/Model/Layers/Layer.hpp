@@ -15,7 +15,9 @@
 class Neuron;
 
 class Layer {
+protected:
     std::vector<Neuron> neurons;
+
 };
 
 #endif /* Layer_hpp */

@@ -19,6 +19,6 @@ class Dense: Layer {
 public:
     Dense(int nodes);
     Dense(int nodes, Dense inputLayer);
-    void connect(Dense layer, Dense nextLayer, std::vector<double> weights);
+    void connect(Dense inputLayer, Dense nextLayer, std::vector<double> weights);
 };
 #endif /* Dense_hpp */
