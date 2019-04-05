@@ -19,8 +19,11 @@ class Neuron;
 
 class InSynapse: public Synapse {
     Axon *source;
-    Neuron *destination;
+    Neuron &destination;
     double weight;
+    
+public:
+    InSynapse(Neuron &source, Neuron &dest, double weight = 0);
 };
 
 #endif /* InSynapse_hpp */

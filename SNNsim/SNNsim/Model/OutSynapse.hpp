@@ -20,8 +20,10 @@ class Neuron;
 class OutSynapse: public Synapse {
     Neuron &source;
     Axon *destination;
+    double weight;
+
 public:
-    OutSynapse(Neuron &source, Neuron &dest);
+    OutSynapse(Neuron &source, Neuron &dest, double weight = 0);
 };
 
 

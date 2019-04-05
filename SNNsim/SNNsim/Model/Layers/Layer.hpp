@@ -15,7 +15,9 @@
 class Node;
 
 class Layer {
-protected:
+public:
+    Layer *previousLayer;
+    Layer *nextLayer;
     std::vector<Node> nodes;
 };
 

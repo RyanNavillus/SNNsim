@@ -34,15 +34,21 @@ Dense::Dense(int nodes, Dense inputLayer, std::vector<double> weights) : Dense::
     Dense::connect(inputLayer, *this, weights);
 }
 
-void Dense::connect(Dense inputLayer, Dense nextLayer, std::vector<double> weights) {
+void Dense::connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> weights) {
     // Check for the correct number of weights
     assert(weights.size() == inputLayer.nodes.size() * nextLayer.nodes.size());
     
-    // TODO: Implement layer connections
+    // Populate layer references
+    inputLayer.nextLayer = &nextLayer;
+    nextLayer.previousLayer = &inputLayer;
     
-    // TODO: Connect every node inputLayer to every node in outputLayer
-    for (int i = 0; i < nodes.size(); i++) {
-        
+    // Iterate through each node in the new layer, adding connections to each node in the input layer
+    for (int i = 0; i < nextLayer.nodes.size(); i++) {
+        Node node = nextLayer.nodes[i];
+        for (int j = 0; j < inputLayer.nodes.size(); j++) {
+            node.inputs.push_back(inputLayer.nodes[j]);
+            node.weights.push_back(weights[(i * inputLayer.nodes.size()) + j]);
+        }
     }
     
 }

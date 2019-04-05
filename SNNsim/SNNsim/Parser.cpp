@@ -43,9 +43,9 @@ Mesh Parser::createXORMesh() {
 //        mesh.cores[0].neurons.push_back(hidden2);
 //        mesh.cores[0].neurons.push_back(output);
     
-        Dense L1 = Dense(2);
-        Dense L2 = Dense(2, L1);
-        Dense L3 = Dense(1, L2);
-        std::cout << "hi\n";
-        return mesh;
+    Dense L1 = Dense(2);
+    Dense L2 = Dense(2, L1, {1,2,3,4});
+    Dense L3 = Dense(1, L2, {1,2});
+    std::cout << "hi\n";
+    return mesh;
 }

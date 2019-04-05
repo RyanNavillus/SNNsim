@@ -11,13 +11,16 @@
 
 #include <stdio.h>
 #include "Core.hpp"
+#include "Layers/Layer.hpp"
 
 class Core;
+class Layer;
 
 class Mesh {
 public:
     Core cores[128];
-    
+    Mesh();
+    Mesh(Layer &model);
     void synchronize(Core *core);
     void loadWeights(std::vector<float> weights);
     std::vector<float> run(std::vector<float> inputs);

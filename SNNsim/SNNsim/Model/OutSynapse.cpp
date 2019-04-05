@@ -8,7 +8,7 @@
 
 #include "OutSynapse.hpp"
 
-OutSynapse::OutSynapse(Neuron &source, Neuron &dest): source(source) {
+OutSynapse::OutSynapse(Neuron &source, Neuron &dest, double weight): source(source), weight(weight) {
     // TEST: Idk if axon will go out of scope, the entire C++ community seems worthless with explaining best practices for these situations.
 
     

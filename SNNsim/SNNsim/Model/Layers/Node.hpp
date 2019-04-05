@@ -13,8 +13,9 @@
 #include <vector>
 
 class Node {
-    std::vector<int> inputs;
-
+public:
+    std::vector<Node> inputs;
+    std::vector<double> weights;
 };
 
 #endif /* Node_hpp */

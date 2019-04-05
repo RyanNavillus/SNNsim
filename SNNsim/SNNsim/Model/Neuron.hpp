@@ -21,7 +21,7 @@ public:
     //Neuron();   // Create empty neuron. Layer construction will handle weights
     int threshold;
     bool evaluatePotential();
-    void addOutput(Neuron &output);
+    void addInput(Neuron &input);
 private:
     std::vector<InSynapse> inputSynapses;
     std::vector<OutSynapse> outputSynapses;

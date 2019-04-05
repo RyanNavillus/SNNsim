@@ -16,12 +16,15 @@ int SYNAPSESPIKEPLACEHOLDER = 1;
 //
 //}
 
-void Neuron::addOutput(Neuron &output) {
+void Neuron::addInput(Neuron &input) {
     // Check if a connection already exists to this node
     
     // Connect to the node
-    OutSynapse synapse = OutSynapse(*this, output);
-    outputSynapses.push_back(synapse);
+    InSynapse in = InSynapse(input, *this);
+    inputSynapses.push_back(in);
+    
+    OutSynapse out = OutSynapse(input, *this);
+    input.outputSynapses.push_back(out);
 }
 
 bool Neuron::evaluatePotential() {
