@@ -12,20 +12,32 @@
 Dense::Dense(int nodes) {
     for (int i = 0; i < nodes; i++) {
         // For each node, create a neuron
-        neurons.push_back(Neuron());
+        this->nodes.push_back(Node());
     }
 }
 
-// TODO: Allow user to initialize with layer weights
 Dense::Dense(int nodes, Dense inputLayer) : Dense::Dense(nodes) {
     // Check if neurons were constructed correctly
-    assert(nodes == neurons.size());
+    assert(nodes == this->nodes.size());
     
     // Choose default weights when connecting
     Dense::connect(inputLayer, *this, std::vector<double>());
 }
 
-void Dense::connect(Dense inpuTayer, Dense nextLayer, std::vector<double> weights) {
+Dense::Dense(int nodes, Dense inputLayer, std::vector<double> weights) : Dense::Dense(nodes) {
+    // Check if neurons were constructed correctly
+    assert(nodes == this->nodes.size());
+    
+    // Choose default weights when connecting
+    Dense::connect(inputLayer, *this, weights);
+}
+
+void Dense::connect(Dense inputLayer, Dense nextLayer, std::vector<double> weights) {
     // TODO: Implement layer connections
+    
+    // Connect every node inputLayer to every node in outputLayer
+    for (int i = 0; i < nodes.size(); i++) {
+        
+    }
     
 }

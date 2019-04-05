@@ -7,3 +7,11 @@
 //
 
 #include "OutSynapse.hpp"
+
+OutSynapse::OutSynapse(Neuron *source, Neuron *destination) {
+    this->source = source;
+    Axon axon = Axon();
+    
+    
+}
+

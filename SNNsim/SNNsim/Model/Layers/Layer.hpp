@@ -11,12 +11,13 @@
 
 #include <stdio.h>
 #include "../Neuron.hpp"
+#include "Node.hpp"
 
-class Neuron;
+class Node;
 
 class Layer {
 protected:
-    std::vector<Neuron> neurons;
+    std::vector<Node> nodes;
 
 };
 

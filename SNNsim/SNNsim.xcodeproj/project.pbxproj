@@ -21,6 +21,7 @@
 		6EBA6B96221F370200B4A960 /* EnergyTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B94221F370200B4A960 /* EnergyTracker.cpp */; };
 		6EBA6B9A221F5A7100B4A960 /* NetworkFile.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B98221F5A7100B4A960 /* NetworkFile.cpp */; };
 		6EBA6B9F221FE28300B4A960 /* SpikeTrain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */; };
+		6EF82915225748FC006D0597 /* Node.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EF82913225748FC006D0597 /* Node.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -66,6 +67,8 @@
 		6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = SpikeTrain.cpp; sourceTree = "<group>"; };
 		6EBA6B9E221FE28300B4A960 /* SpikeTrain.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = SpikeTrain.hpp; sourceTree = "<group>"; };
 		6EBA6BA0221FE5E000B4A960 /* Network Format.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = "Network Format.md"; sourceTree = "<group>"; };
+		6EF82913225748FC006D0597 /* Node.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Node.cpp; sourceTree = "<group>"; };
+		6EF82914225748FC006D0597 /* Node.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Node.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +89,8 @@
 				6EAEEE192223991400E7D2D6 /* Layer.hpp */,
 				6EAEEE1B22239AE600E7D2D6 /* Dense.cpp */,
 				6EAEEE1C22239AE600E7D2D6 /* Dense.hpp */,
+				6EF82913225748FC006D0597 /* Node.cpp */,
+				6EF82914225748FC006D0597 /* Node.hpp */,
 			);
 			path = Layers;
 			sourceTree = "<group>";
@@ -220,6 +225,7 @@
 				6EBA6B9F221FE28300B4A960 /* SpikeTrain.cpp in Sources */,
 				6EBA6B7C221F2DFB00B4A960 /* Mesh.cpp in Sources */,
 				6EBA6B82221F2E1300B4A960 /* Neuron.cpp in Sources */,
+				6EF82915225748FC006D0597 /* Node.cpp in Sources */,
 				6EAEEE1A2223991400E7D2D6 /* Layer.cpp in Sources */,
 				6EBA6B88221F2E2200B4A960 /* Parser.cpp in Sources */,
 				6EBA6B96221F370200B4A960 /* EnergyTracker.cpp in Sources */,
