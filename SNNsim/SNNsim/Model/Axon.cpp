@@ -7,3 +7,11 @@
 //
 
 #include "Axon.hpp"
+
+Axon::Axon() {
+    
+}
+
+Axon::Axon(Neuron destination) : source(std::pair<Core *, int>()), destination(std::pair<Core *, int>()) {
+    
+}

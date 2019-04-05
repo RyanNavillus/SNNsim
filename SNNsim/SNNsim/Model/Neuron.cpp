@@ -12,15 +12,15 @@ int potential;
 int WPLACEHOLDER = 0;
 int SYNAPSESPIKEPLACEHOLDER = 1;
 
-Neuron::Neuron() {
-    
-}
+//Neuron::Neuron() {
+//
+//}
 
-void Neuron::addOutput(Neuron *output) {
+void Neuron::addOutput(Neuron &output) {
     // Check if a connection already exists to this node
     
     // Connect to the node
-    OutSynapse synapse = OutSynapse(this, output);
+    OutSynapse synapse = OutSynapse(*this, output);
     outputSynapses.push_back(synapse);
 }
 

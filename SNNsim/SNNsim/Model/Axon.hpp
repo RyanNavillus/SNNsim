@@ -12,8 +12,10 @@
 #include <stdio.h>
 #include <utility>
 #include "Core.hpp"
+#include "Neuron.hpp"
 
 class Core;
+class Neruon;
 
 class Axon {
 public:
@@ -23,6 +25,8 @@ public:
     int dly;
     int tag;
     
+    Axon();
+    Axon(Neuron destination);
 };
 
 #endif /* Axon_hpp */

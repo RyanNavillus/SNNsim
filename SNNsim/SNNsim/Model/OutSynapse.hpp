@@ -18,10 +18,10 @@ class Axon;
 class Neuron;
 
 class OutSynapse: public Synapse {
-    Neuron *source;
+    Neuron &source;
     Axon *destination;
 public:
-    OutSynapse(Neuron *source, Neuron *destination);
+    OutSynapse(Neuron &source, Neuron &dest);
 };
 
 

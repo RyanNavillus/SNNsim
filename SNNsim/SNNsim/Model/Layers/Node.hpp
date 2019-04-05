@@ -14,7 +14,8 @@
 class Node {
 public:
     Node();
-    
+    //std::vector<Node> inputs;
+    Node *output;
 };
 
 #endif /* Node_hpp */

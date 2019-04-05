@@ -8,10 +8,12 @@
 
 #include "OutSynapse.hpp"
 
-OutSynapse::OutSynapse(Neuron *source, Neuron *destination) {
-    this->source = source;
-    Axon axon = Axon();
+OutSynapse::OutSynapse(Neuron &source, Neuron &dest): source(source) {
+    // TEST: Idk if axon will go out of scope, the entire C++ community seems worthless with explaining best practices for these situations.
+
     
-    
+    // TODO: Initialize Axon from current core to destination core
+    Axon axon (dest);
+    destination = &axon;
 }
 
