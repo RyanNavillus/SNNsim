@@ -10,12 +10,11 @@
 #define Node_hpp
 
 #include <stdio.h>
+#include <vector>
 
 class Node {
-public:
-    Node();
-    //std::vector<Node> inputs;
-    Node *output;
+    std::vector<int> inputs;
+
 };
 
 #endif /* Node_hpp */

@@ -12,7 +12,6 @@
 #include <stdio.h>
 #include "Layer.hpp"
 
-class Neuron;
 class Layer;
 
 class Dense: Layer {

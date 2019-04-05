@@ -10,7 +10,6 @@
 #define Layer_hpp
 
 #include <stdio.h>
-#include "../Neuron.hpp"
 #include "Node.hpp"
 
 class Node;
@@ -18,7 +17,6 @@ class Node;
 class Layer {
 protected:
     std::vector<Node> nodes;
-
 };
 
 #endif /* Layer_hpp */
