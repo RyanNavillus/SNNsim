@@ -27,7 +27,7 @@ Mesh::Mesh(Layer &model) {
             
             // Create connections to the previous layer
             for (int j = 0; j < currentNode.inputs.size(); j++) {
-                int previousIndex = (cores[0].neurons.size() - 1) - (currentNode.inputs.size() - 1) - i;
+                int previousIndex = ((int)cores[0].neurons.size() - 1) - ((int)currentNode.inputs.size() - 1) - i;
                 Neuron &inputNeuron = cores[0].neurons[previousIndex + j];
                 cores[0].neurons[cores[0].neurons.size() - 1].addInput(inputNeuron);
                 

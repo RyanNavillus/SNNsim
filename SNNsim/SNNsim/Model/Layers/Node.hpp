@@ -11,11 +11,16 @@
 
 #include <stdio.h>
 #include <vector>
+#include <string>
 
 class Node {
 public:
+    Node();
     std::vector<Node> inputs;
     std::vector<double> weights;
+    std::string name = "";
+    static int nodeCount;
+    void printNode();
 };
 
 #endif /* Node_hpp */

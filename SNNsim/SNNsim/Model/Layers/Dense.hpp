@@ -14,11 +14,10 @@
 
 class Layer;
 
-class Dense: Layer {
+class Dense: public Layer {
 public:
-    Dense(int nodes);
-    Dense(int nodes, Dense inputLayer);
-    Dense(int nodes, Dense inputLayer, std::vector<double> weights);
+    Dense(int nodes, std::string name = "");
+    Dense(int nodes, Dense &inputLayer, std::vector<double> weights = std::vector<double>(), std::string name = "");
     static void connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> weights);
 };
 #endif /* Dense_hpp */

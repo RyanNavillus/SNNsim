@@ -9,24 +9,16 @@
 #include "Dense.hpp"
 #include <iostream>
 
-Dense::Dense(int nodes) {
+Dense::Dense(int nodes, std::string name) {
+    this->name = name;
+    this->previousLayer = nullptr;
     for (int i = 0; i < nodes; i++) {
         // For each node, create a neuron
         this->nodes.push_back(Node());
     }
 }
 
-Dense::Dense(int nodes, Dense inputLayer) : Dense::Dense(nodes) {
-    // Check if neurons were constructed correctly
-    assert(nodes == this->nodes.size());
-    
-    // TODO: Choose default weights when connecting
-    
-    // Create connections from the input layer
-    Dense::connect(inputLayer, *this, std::vector<double>());
-}
-
-Dense::Dense(int nodes, Dense inputLayer, std::vector<double> weights) : Dense::Dense(nodes) {
+Dense::Dense(int nodes, Dense &inputLayer, std::vector<double> weights, std::string name) : Dense::Dense(nodes, name) {
     // Check if neurons were constructed correctly
     assert(nodes == this->nodes.size());
     
@@ -37,6 +29,8 @@ Dense::Dense(int nodes, Dense inputLayer, std::vector<double> weights) : Dense::
 void Dense::connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> weights) {
     // Check for the correct number of weights
     assert(weights.size() == inputLayer.nodes.size() * nextLayer.nodes.size());
+    
+    // TODO: put nodes in separate layers into different cores
     
     // Populate layer references
     inputLayer.nextLayer = &nextLayer;

@@ -7,4 +7,17 @@
 //
 
 #include "Node.hpp"
+#include <iostream>
 
+int Node::nodeCount = 0;
+
+Node::Node() {
+    nodeCount++;
+    this->name = std::to_string(nodeCount);
+}
+
+void Node::printNode() {
+    for (int i = 0; i < inputs.size(); i++) {
+        std::cout << inputs[i].name << "<-" << name << " = " << std::to_string(weights[i]) << "\n";
+    }
+}

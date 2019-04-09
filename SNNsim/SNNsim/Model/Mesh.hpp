@@ -21,7 +21,7 @@ public:
     Core cores[128];
     Mesh();
     Mesh(Layer &model);
-    void synchronize(Core *core);
+    void synchronize(Core *core); // just itrate over them all
     void loadWeights(std::vector<float> weights);
     std::vector<float> run(std::vector<float> inputs);
 };

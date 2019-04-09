@@ -19,6 +19,9 @@ public:
     Layer *previousLayer;
     Layer *nextLayer;
     std::vector<Node> nodes;
+    std::string name;
+    void printNetwork();
+
 };
 
 #endif /* Layer_hpp */
