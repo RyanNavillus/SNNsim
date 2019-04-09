@@ -18,6 +18,6 @@ Node::Node() {
 
 void Node::printNode() {
     for (int i = 0; i < inputs.size(); i++) {
-        std::cout << inputs[i].name << "<-" << name << " = " << std::to_string(weights[i]) << "\n";
+        std::cout << inputs[i].get()->name << "->" << name << " = " << std::to_string(weights[i]) << "\n";
     }
 }

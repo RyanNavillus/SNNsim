@@ -23,7 +23,7 @@ Mesh::Mesh(Layer &model) {
             Neuron neuron = Neuron();
             cores[0].neurons.push_back(neuron);
             
-            Node currentNode = currentLayer->nodes[i];
+            Node currentNode = *(currentLayer->nodes[i]);
             
             // Create connections to the previous layer
             for (int j = 0; j < currentNode.inputs.size(); j++) {

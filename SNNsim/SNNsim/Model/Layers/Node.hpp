@@ -16,7 +16,7 @@
 class Node {
 public:
     Node();
-    std::vector<Node> inputs;
+    std::vector<std::shared_ptr<Node>> inputs;
     std::vector<double> weights;
     std::string name = "";
     static int nodeCount;

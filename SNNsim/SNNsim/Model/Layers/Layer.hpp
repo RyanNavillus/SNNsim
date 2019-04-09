@@ -18,7 +18,7 @@ class Layer {
 public:
     Layer *previousLayer;
     Layer *nextLayer;
-    std::vector<Node> nodes;
+    std::vector<std::shared_ptr<Node>> nodes;
     std::string name;
     void printNetwork();
 

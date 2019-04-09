@@ -12,9 +12,11 @@
 Dense::Dense(int nodes, std::string name) {
     this->name = name;
     this->previousLayer = nullptr;
+    this->nextLayer = nullptr;
     for (int i = 0; i < nodes; i++) {
         // For each node, create a neuron
-        this->nodes.push_back(Node());
+        auto node = std::make_shared<Node>();
+        this->nodes.push_back(node);
     }
 }
 
@@ -38,10 +40,11 @@ void Dense::connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> wei
     
     // Iterate through each node in the new layer, adding connections to each node in the input layer
     for (int i = 0; i < nextLayer.nodes.size(); i++) {
-        Node node = nextLayer.nodes[i];
+        auto nodePtr = nextLayer.nodes[i];
         for (int j = 0; j < inputLayer.nodes.size(); j++) {
-            node.inputs.push_back(inputLayer.nodes[j]);
-            node.weights.push_back(weights[(i * inputLayer.nodes.size()) + j]);
+            
+            nodePtr->inputs.push_back(inputLayer.nodes[j]);
+            nodePtr->weights.push_back(weights[(i * inputLayer.nodes.size()) + j]);
         }
     }
     
