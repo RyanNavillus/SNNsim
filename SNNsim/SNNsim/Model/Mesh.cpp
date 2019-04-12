@@ -47,14 +47,19 @@ Mesh::Mesh(Layer &model) {
             // Collect all outputs
             std::vector<std::shared_ptr<InSynapse>> outputs {};
             for (int j = 0; j < currentNode.outputs.size(); j++) {
-                outputs.push_back(std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron));
+                std::shared_ptr<InSynapse> inSynapse = std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron);
+                currentNode.outputs[i]->neuron->inputSynapses.push_back(inSynapse);
+                outputs.push_back(inSynapse);
             }
             
             // Create connection from input to set of all outputs
             // TODO: Ensure each Axon points to exactly 1 Core
-            OutSynapse axonInput (*currentNode.neuron);
+            std::shared_ptr<OutSynapse> axonInput = std::make_shared<OutSynapse>(*currentNode.neuron);
+            
+            currentNode.neuron->outputSynapses.push_back(axonInput);
             
             Axon axon (axonInput, outputs);
+            
         }
     }
 }

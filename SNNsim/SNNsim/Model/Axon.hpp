@@ -23,14 +23,14 @@ class OutSynapse;
 
 class Axon {
 public:
-    OutSynapse &source;
+    std::shared_ptr<OutSynapse> source;
     std::vector<std::shared_ptr<InSynapse>> destinations;
     int wgt;
     int dly;
     int tag;
     
     Axon();
-    Axon(OutSynapse &source, std::vector<std::shared_ptr<InSynapse>> destinations = std::vector<std::shared_ptr<InSynapse>>());
+    Axon(std::shared_ptr<OutSynapse> source, std::vector<std::shared_ptr<InSynapse>> destinations = std::vector<std::shared_ptr<InSynapse>>());
 };
 
 #endif /* Axon_hpp */
