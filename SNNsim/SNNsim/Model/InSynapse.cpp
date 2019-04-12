@@ -8,10 +8,10 @@
 
 #include "InSynapse.hpp"
 
-InSynapse::InSynapse(Neuron &source, Neuron &dest, double weight): destination(dest), weight(weight) {
+InSynapse::InSynapse(Neuron &dest, double weight): destination(dest), weight(weight) {
     // TEST: Idk if axon will go out of scope, the entire C++ community seems worthless with explaining best practices for these situations.
     
     // TODO: Initialize Axon from current core to destination core
-    Axon axon (source);
-    InSynapse::source = &axon;
+    //Axon axon (source);
+    //InSynapse::source = &axon;
 }

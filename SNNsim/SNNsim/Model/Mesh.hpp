@@ -23,6 +23,7 @@ public:
     Mesh(Layer &model);
     void synchronize(Core *core); // just itrate over them all
     void loadWeights(std::vector<float> weights);
+    void printMesh();
     std::vector<float> run(std::vector<float> inputs);
 };
 

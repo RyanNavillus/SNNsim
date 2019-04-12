@@ -15,25 +15,52 @@ Mesh::Mesh() {
 }
 
 Mesh::Mesh(Layer &model) {
-    cores[0] = Core();
     Layer *currentLayer = &model;
+    int layerCounter = 0; // Used to put each layer in Mesh.cores at index layerCounter
+    
+    // Iterate through each layer, creating neurons.
     while (currentLayer != nullptr) {
+        cores[layerCounter] = Core();
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
-            // Create Neuron for each Node
-            Neuron neuron = Neuron();
-            cores[0].neurons.push_back(neuron);
-            
+            // Get current node
             Node currentNode = *(currentLayer->nodes[i]);
             
-            // Create connections to the previous layer
-            for (int j = 0; j < currentNode.inputs.size(); j++) {
-                int previousIndex = ((int)cores[0].neurons.size() - 1) - ((int)currentNode.inputs.size() - 1) - i;
-                Neuron &inputNeuron = cores[0].neurons[previousIndex + j];
-                cores[0].neurons[cores[0].neurons.size() - 1].addInput(inputNeuron);
-                
-            }
+            // Create neuron for node
+            Neuron neuron = Neuron();
+            
+            // Add neuron to the current layer's core
+            cores[layerCounter].neurons.push_back(neuron);
+            
+            // Save a reference to the neuron in the node to create connections later
+            currentNode.neuron = &cores[layerCounter].neurons.back();
         }
-        
         currentLayer = currentLayer->nextLayer;
+        layerCounter++;
+    }
+    
+    // Iterate again, this time adding in connections
+    currentLayer = &model;
+    while (currentLayer != nullptr) {
+        for (int i = 0; i < currentLayer->nodes.size(); i++) {
+            Node currentNode = *(currentLayer->nodes[i]);
+            
+            // Collect all outputs
+            std::vector<std::shared_ptr<InSynapse>> outputs {};
+            for (int j = 0; j < currentNode.outputs.size(); j++) {
+                outputs.push_back(std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron));
+            }
+            
+            // Create connection from input to set of all outputs
+            // TODO: Ensure each Axon points to exactly 1 Core
+            OutSynapse axonInput (*currentNode.neuron);
+            
+            Axon axon (axonInput, outputs);
+        }
+    }
+}
+
+void Mesh::printMesh() {
+    for (int i = 0; i < 128; i++) {
+        cores[i].printCore();
     }
 }

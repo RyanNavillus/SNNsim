@@ -18,13 +18,13 @@ class Axon;
 class Neuron;
 
 class OutSynapse: public Synapse {
+public:
     Neuron &source;
     Axon *destination;
-    double weight;
-
-public:
-    OutSynapse(Neuron &source, Neuron &dest, double weight = 0);
+    
+    OutSynapse(Neuron &source);
 };
 
 
 #endif /* OutSynapse_hpp */
+

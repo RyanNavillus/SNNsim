@@ -8,10 +8,14 @@
 
 #include "Axon.hpp"
 
-Axon::Axon() {
+Axon::Axon(OutSynapse &source, std::vector<std::shared_ptr<InSynapse>> destinations): source(source), destinations(destinations) {
+    source.destination = this;
     
+    for (int i = 0; i < destinations.size(); i++) {
+        destinations[i]->source = this;
+    }
 }
 
-Axon::Axon(Neuron destination) : source(std::pair<Core *, int>()), destination(std::pair<Core *, int>()) {
+/*Axon::Axon(Neuron destination) : source(std::pair<Core *, int>()), destination(std::pair<Core *, int>()) {
     
-}
+}*/

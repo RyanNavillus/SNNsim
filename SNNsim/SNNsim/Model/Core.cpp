@@ -7,5 +7,17 @@
 //
 
 #include "Core.hpp"
+#include <iostream>
+int Core::coreCount = 0;
 
+Core::Core() {
+    coreCount++;
+    this->name = "C" + std::to_string(coreCount);
+}
 
+void Core::printCore() {
+    std::cout << name << ":\n";
+    for (int i = 0; i < neurons.size(); i++) {
+        neurons[i].printNeuron();
+    }
+}

@@ -13,20 +13,24 @@
 #include <utility>
 #include "Core.hpp"
 #include "Neuron.hpp"
+#include "InSynapse.hpp"
+#include "OutSynapse.hpp"
 
 class Core;
-class Neruon;
+class Neuron;
+class InSynapse;
+class OutSynapse;
 
 class Axon {
 public:
-    std::pair<Core *, int> source;
-    std::pair<Core *, int> destination;
+    OutSynapse &source;
+    std::vector<std::shared_ptr<InSynapse>> destinations;
     int wgt;
     int dly;
     int tag;
     
     Axon();
-    Axon(Neuron destination);
+    Axon(OutSynapse &source, std::vector<std::shared_ptr<InSynapse>> destinations = std::vector<std::shared_ptr<InSynapse>>());
 };
 
 #endif /* Axon_hpp */

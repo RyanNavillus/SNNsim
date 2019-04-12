@@ -12,14 +12,20 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+#include "../Neuron.hpp"
+
+class Neuron;
 
 class Node {
 public:
-    Node();
     std::vector<std::shared_ptr<Node>> inputs;
+    std::vector<std::shared_ptr<Node>> outputs;
     std::vector<double> weights;
     std::string name = "";
+    Neuron *neuron;
     static int nodeCount;
+    
+    Node();
     void printNode();
 };
 

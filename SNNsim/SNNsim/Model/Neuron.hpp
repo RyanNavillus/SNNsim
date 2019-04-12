@@ -10,6 +10,7 @@
 #define Neuron_hpp
 
 #include <stdio.h>
+#include <string>
 #include "InSynapse.hpp"
 #include "OutSynapse.hpp"
 
@@ -18,10 +19,15 @@ class OutSynapse;
 
 class Neuron {
 public:
-    //Neuron();   // Create empty neuron. Layer construction will handle weights
+    std::string name;
     int threshold;
+    
+    static int neuronCount;
+    
+    Neuron();   // Create empty neuron. Layer construction will handle weights
     bool evaluatePotential();
     void addInput(Neuron &input);
+    void printNeuron();
 private:
     std::vector<InSynapse> inputSynapses;
     std::vector<OutSynapse> outputSynapses;

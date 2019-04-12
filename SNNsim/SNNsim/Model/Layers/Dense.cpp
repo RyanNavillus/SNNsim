@@ -32,8 +32,6 @@ void Dense::connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> wei
     // Check for the correct number of weights
     assert(weights.size() == inputLayer.nodes.size() * nextLayer.nodes.size());
     
-    // TODO: put nodes in separate layers into different cores
-    
     // Populate layer references
     inputLayer.nextLayer = &nextLayer;
     nextLayer.previousLayer = &inputLayer;
@@ -44,6 +42,7 @@ void Dense::connect(Dense &inputLayer, Dense &nextLayer, std::vector<double> wei
         for (int j = 0; j < inputLayer.nodes.size(); j++) {
             
             nodePtr->inputs.push_back(inputLayer.nodes[j]);
+            inputLayer.nodes[j]->outputs.push_back(nodePtr);
             nodePtr->weights.push_back(weights[(i * inputLayer.nodes.size()) + j]);
         }
     }

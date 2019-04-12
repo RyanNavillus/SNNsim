@@ -18,12 +18,13 @@ class Axon;
 class Neuron;
 
 class InSynapse: public Synapse {
-    Axon *source;
-    Neuron &destination;
     double weight;
     
 public:
-    InSynapse(Neuron &source, Neuron &dest, double weight = 0);
+    Axon *source;
+    Neuron &destination;
+    
+    InSynapse(Neuron &dest, double weight = 0);
 };
 
 #endif /* InSynapse_hpp */

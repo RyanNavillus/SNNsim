@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <vector>
+#include <string>
 #include "Axon.hpp"
 #include "Neuron.hpp"
 
@@ -19,11 +20,16 @@ class Neuron;
 
 class Core {
 public:
+    std::string name;
     int timestep;
     std::vector<Neuron> neurons;
     std::vector<Axon> inputAxons;
     std::vector<Axon> outputAxons;
     
+    static int coreCount;
+    
+    Core();
+    void printCore();
     void step();
 };
 

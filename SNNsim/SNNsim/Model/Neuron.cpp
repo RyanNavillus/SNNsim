@@ -7,24 +7,28 @@
 //
 
 #include "Neuron.hpp"
+#include <iostream>
 
 int potential;
 int WPLACEHOLDER = 0;
 int SYNAPSESPIKEPLACEHOLDER = 1;
 
-//Neuron::Neuron() {
-//
-//}
+int Neuron::neuronCount = 0;
+
+Neuron::Neuron() {
+    neuronCount++;
+    this->name = "N" + std::to_string(neuronCount);
+}
 
 void Neuron::addInput(Neuron &input) {
     // Check if a connection already exists to this node
     
     // Connect to the node
-    InSynapse in = InSynapse(input, *this);
-    inputSynapses.push_back(in);
-    
-    OutSynapse out = OutSynapse(input, *this);
-    input.outputSynapses.push_back(out);
+//    InSynapse in = InSynapse(input, *this);
+//    inputSynapses.push_back(in);
+//    
+//    OutSynapse out = OutSynapse(input, *this);
+//    input.outputSynapses.push_back(out);
 }
 
 bool Neuron::evaluatePotential() {
@@ -35,3 +39,6 @@ bool Neuron::evaluatePotential() {
     return false;
 }
 
+void Neuron::printNeuron() {
+    std::cout << "\t" << name << ":\n";
+}
