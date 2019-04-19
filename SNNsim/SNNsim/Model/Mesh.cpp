@@ -46,7 +46,14 @@ Mesh::Mesh(Layer &model) {
             // Collect all outputs
             std::vector<std::shared_ptr<InSynapse>> outputs {};
             for (int j = 0; j < currentNode.outputs.size(); j++) {
-                std::shared_ptr<InSynapse> inSynapse = std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron, currentNode.outputs[j]->weights[j]);
+                // Get the weight from the output neuron
+                double weight = 0;
+                for (int k = 0; k < currentNode.outputs[j]->inputs.size(); k++) {
+                    if (currentNode.outputs[j]->inputs[k]->name == currentNode.name) {
+                        weight = currentNode.outputs[j]->weights[k];
+                    }
+                }
+                std::shared_ptr<InSynapse> inSynapse = std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron, weight);
                 currentNode.outputs[j]->neuron->inputSynapses.push_back(inSynapse);
                 outputs.push_back(inSynapse);
             }

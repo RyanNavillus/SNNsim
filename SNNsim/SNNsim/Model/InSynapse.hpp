@@ -18,9 +18,9 @@ class Axon;
 class Neuron;
 
 class InSynapse: public Synapse {
-    double weight;
     
 public:
+    double weight;
     Axon *source;
     Neuron &destination;
     

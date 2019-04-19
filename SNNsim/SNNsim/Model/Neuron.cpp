@@ -44,7 +44,7 @@ void Neuron::printNeuron() {
     for (int i = 0; i < outputSynapses.size(); i++) {
         OutSynapse synapse = *outputSynapses[i];
         for (int j = 0; j < synapse.destination->destinations.size(); j++) {
-            std::cout << "\t\t" << name << "->" << synapse.destination->destinations[j]->destination.name << "\n";
+            std::cout << "\t\t" << name << "->" << synapse.destination->destinations[j]->destination.name << " {" << std::to_string(synapse.destination->destinations[j]->weight) << "}\n";
         }
     }
 }
