@@ -22,7 +22,7 @@ class Core {
 public:
     std::string name;
     int timestep;
-    std::vector<Neuron> neurons;
+    std::vector<std::shared_ptr<Neuron>> neurons;
     std::vector<Axon> inputAxons;
     std::vector<Axon> outputAxons;
     

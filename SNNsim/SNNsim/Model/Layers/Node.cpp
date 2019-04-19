@@ -14,6 +14,7 @@ int Node::nodeCount = 0;
 Node::Node() {
     nodeCount++;
     this->name = std::to_string(nodeCount);
+    this->neuron = nullptr;
 }
 
 void Node::printNode() {

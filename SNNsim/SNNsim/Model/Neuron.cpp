@@ -41,4 +41,10 @@ bool Neuron::evaluatePotential() {
 
 void Neuron::printNeuron() {
     std::cout << "\t" << name << ":\n";
+    for (int i = 0; i < outputSynapses.size(); i++) {
+        OutSynapse synapse = *outputSynapses[i];
+        for (int j = 0; j < synapse.destination->destinations.size(); j++) {
+            std::cout << "\t\t" << name << "->" << synapse.destination->destinations[j]->destination.name << "\n";
+        }
+    }
 }

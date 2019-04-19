@@ -16,8 +16,12 @@ Core::Core() {
 }
 
 void Core::printCore() {
+    if (neurons.size() == 0) {
+        return;
+    }
+    
     std::cout << name << ":\n";
     for (int i = 0; i < neurons.size(); i++) {
-        neurons[i].printNeuron();
+        neurons[i]->printNeuron();
     }
 }

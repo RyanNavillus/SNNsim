@@ -22,7 +22,7 @@ public:
     std::vector<std::shared_ptr<Node>> outputs;
     std::vector<double> weights;
     std::string name = "";
-    Neuron *neuron;
+    std::shared_ptr<Neuron> neuron;
     static int nodeCount;
     
     Node();

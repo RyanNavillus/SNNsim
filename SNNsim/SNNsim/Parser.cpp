@@ -22,12 +22,13 @@ Mesh Parser::parse(NetworkFile file) {
 }
 
 Mesh Parser::createXORMesh() {
-    //Replace this with Layer class to handle connection logic
-    Mesh mesh = Mesh();
-    
     Dense L1 = Dense(2, "input");
     Dense L2 = Dense(2, L1, {1,2,3,4}, "hidden");
     Dense L3 = Dense(1, L2, {1,2}, "output");
     L1.printNetwork();
+    
+    Mesh mesh = Mesh(L1);
+    std::cout << "\n";
+    mesh.printMesh();
     return mesh;
 }

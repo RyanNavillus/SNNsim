@@ -7,11 +7,12 @@
 //
 
 #include "Mesh.hpp"
+#include <iostream>
 
 using namespace std;
 
 Mesh::Mesh() {
-    cores[0] = Core();
+    
 }
 
 Mesh::Mesh(Layer &model) {
@@ -23,16 +24,14 @@ Mesh::Mesh(Layer &model) {
         cores[layerCounter] = Core();
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
             // Get current node
-            Node currentNode = *(currentLayer->nodes[i]);
-            
-            // Create neuron for node
-            Neuron neuron = Neuron();
+            auto currentNode = currentLayer->nodes[i];
             
             // Add neuron to the current layer's core
-            cores[layerCounter].neurons.push_back(neuron);
+            cores[layerCounter].neurons.push_back(std::make_shared<Neuron>());
             
             // Save a reference to the neuron in the node to create connections later
-            currentNode.neuron = &cores[layerCounter].neurons.back();
+            currentNode->neuron = cores[layerCounter].neurons.back();
+            int p = 0;
         }
         currentLayer = currentLayer->nextLayer;
         layerCounter++;
@@ -47,8 +46,8 @@ Mesh::Mesh(Layer &model) {
             // Collect all outputs
             std::vector<std::shared_ptr<InSynapse>> outputs {};
             for (int j = 0; j < currentNode.outputs.size(); j++) {
-                std::shared_ptr<InSynapse> inSynapse = std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron);
-                currentNode.outputs[i]->neuron->inputSynapses.push_back(inSynapse);
+                std::shared_ptr<InSynapse> inSynapse = std::make_shared<InSynapse>(*currentNode.outputs[j]->neuron, currentNode.outputs[j]->weights[j]);
+                currentNode.outputs[j]->neuron->inputSynapses.push_back(inSynapse);
                 outputs.push_back(inSynapse);
             }
             
@@ -58,9 +57,10 @@ Mesh::Mesh(Layer &model) {
             
             currentNode.neuron->outputSynapses.push_back(axonInput);
             
-            Axon axon (axonInput, outputs);
-            
+            // This code has important side effects. It should be rewritten
+            Axon *axon = new Axon(axonInput, outputs);
         }
+        currentLayer = currentLayer->nextLayer;
     }
 }
 
