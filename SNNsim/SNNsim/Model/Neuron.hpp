@@ -26,10 +26,12 @@ public:
     std::vector<std::shared_ptr<OutSynapse>> outputSynapses;
     
     Neuron();   // Create empty neuron. Layer construction will handle weights
-    bool evaluatePotential();
+    void evaluatePotential(float weight);
     void addInput(Neuron &input);
     void printNeuron();
 
+private:
+    void spike();
 };
 
 #endif /* Neuron_hpp */

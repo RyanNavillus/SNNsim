@@ -11,17 +11,17 @@
 
 using namespace std;
 
+int Mesh::meshCount = 0;
 Mesh::Mesh() {
-    
+    meshCount++;
 }
 
-Mesh::Mesh(Layer &model) {
+Mesh::Mesh(Layer &model): Mesh() {
     Layer *currentLayer = &model;
     int layerCounter = 0; // Used to put each layer in Mesh.cores at index layerCounter
     
     // Iterate through each layer, creating neurons.
     while (currentLayer != nullptr) {
-        cores[layerCounter] = Core();
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
             // Get current node
             auto currentNode = currentLayer->nodes[i];
@@ -69,6 +69,11 @@ Mesh::Mesh(Layer &model) {
         }
         currentLayer = currentLayer->nextLayer;
     }
+}
+
+std::vector<float> Mesh::run(std::vector<float> inputs) {
+    
+    return std::vector<float>();
 }
 
 void Mesh::printMesh() {

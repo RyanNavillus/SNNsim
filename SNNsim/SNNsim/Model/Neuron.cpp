@@ -17,7 +17,7 @@ int Neuron::neuronCount = 0;
 
 Neuron::Neuron() {
     neuronCount++;
-    this->name = "N" + std::to_string(neuronCount);
+    this->name = "Neuron " + std::to_string(neuronCount);
 }
 
 void Neuron::addInput(Neuron &input) {
@@ -31,12 +31,19 @@ void Neuron::addInput(Neuron &input) {
 //    input.outputSynapses.push_back(out);
 }
 
-bool Neuron::evaluatePotential() {
+void Neuron::evaluatePotential(float weight) {
     // TODO: Implement potential
-    for (int i = 0; i < inputSynapses.size(); i++) {
-        potential += WPLACEHOLDER * SYNAPSESPIKEPLACEHOLDER;
+    potential += weight;
+    if (potential > threshold) {
+        spike();
+        potential = 0;
     }
-    return false;
+}
+
+void Neuron::spike() {
+    for (int i = 0; i < outputSynapses.size(); i++) {
+        outputSynapses[i]->sendSpike();
+    }
 }
 
 void Neuron::printNeuron() {
@@ -44,7 +51,7 @@ void Neuron::printNeuron() {
     for (int i = 0; i < outputSynapses.size(); i++) {
         OutSynapse synapse = *outputSynapses[i];
         for (int j = 0; j < synapse.destination->destinations.size(); j++) {
-            std::cout << "\t\t" << name << "->" << synapse.destination->destinations[j]->destination.name << " {" << std::to_string(synapse.destination->destinations[j]->weight) << "}\n";
+            std::cout << "\t\t" << name << " -> " << synapse.destination->destinations[j]->destination.name << " {" << std::to_string(synapse.destination->destinations[j]->weight) << "}\n";
         }
     }
 }

@@ -12,7 +12,7 @@ int Core::coreCount = 0;
 
 Core::Core() {
     coreCount++;
-    this->name = "C" + std::to_string(coreCount);
+    this->name = "Core " + std::to_string(coreCount);
 }
 
 void Core::printCore() {

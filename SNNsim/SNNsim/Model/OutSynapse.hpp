@@ -23,6 +23,8 @@ public:
     Axon *destination;
     
     OutSynapse(Neuron &source);
+    void sendSpike();
+    
 };
 
 

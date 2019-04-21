@@ -17,3 +17,9 @@ OutSynapse::OutSynapse(Neuron &source): source(source) {
     //destination = &axon;
 }
 
+void OutSynapse::sendSpike() {
+    for (int i = 0; i < destination->destinations.size(); i++) {
+        destination->destinations[i]->destination.evaluatePotential(destination->destinations[i]->weight);
+    }
+}
+

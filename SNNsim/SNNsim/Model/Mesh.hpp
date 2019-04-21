@@ -25,6 +25,9 @@ public:
     void loadWeights(std::vector<float> weights);
     void printMesh();
     std::vector<float> run(std::vector<float> inputs);
+    static int meshCount;
+private:
+    
 };
 
 #endif /* Mesh_hpp */
