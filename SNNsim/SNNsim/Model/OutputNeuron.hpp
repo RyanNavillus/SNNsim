@@ -18,6 +18,7 @@ class Neuron;
 
 class OutputNeuron : public Neuron {
 public:
+    OutputNeuron(float threshold = 0);
     int spikeCount;
     void spike() override;
 };

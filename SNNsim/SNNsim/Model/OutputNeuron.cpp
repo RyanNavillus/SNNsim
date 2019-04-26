@@ -7,6 +7,10 @@
 //
 
 #include "OutputNeuron.hpp"
+#include <iostream>
+
+OutputNeuron::OutputNeuron(float threshold) : Neuron(threshold), spikeCount(0) {
+}
 
 void OutputNeuron::spike() {
     spikeCount++;

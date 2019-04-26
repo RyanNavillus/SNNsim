@@ -11,9 +11,8 @@
 
 int Neuron::neuronCount = 0;
 
-Neuron::Neuron() {
+Neuron::Neuron(float threshold): threshold(threshold) {
     neuronCount++;
-    threshold = 1;
     potential = 0;
     this->name = "Neuron " + std::to_string(neuronCount);
 }
@@ -29,16 +28,25 @@ void Neuron::addInput(Neuron &input) {
 //    input.outputSynapses.push_back(out);
 }
 
-void Neuron::evaluatePotential(float weight) {
-    // TODO: Implement potential
+void Neuron::increasePotential(float weight) {
     potential += weight;
-    if (potential >= threshold) {
+}
+
+void Neuron::evaluatePotential() {
+    if (potential > threshold) {
         spike();
         potential = 0;
+    } else {
+        leak();
     }
 }
 
+void Neuron::leak() {
+    potential -= 1;
+}
+
 void Neuron::spike() {
+    //std::cout << "Spike: " << name << "\n";
     for (int i = 0; i < outputSynapses.size(); i++) {
         outputSynapses[i]->sendSpike();
     }

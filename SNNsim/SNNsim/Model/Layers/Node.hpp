@@ -21,6 +21,7 @@ public:
     std::vector<std::shared_ptr<Node>> inputs;
     std::vector<std::shared_ptr<Node>> outputs;
     std::vector<double> weights;
+    double threshold;
     std::string name = "";
     std::shared_ptr<Neuron> neuron;
     static int nodeCount;

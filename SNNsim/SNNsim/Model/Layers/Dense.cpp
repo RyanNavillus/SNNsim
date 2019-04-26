@@ -9,20 +9,22 @@
 #include "Dense.hpp"
 #include <iostream>
 
-Dense::Dense(int nodes, std::string name) {
+Dense::Dense(int nodes, std::vector<double> thresholds, std::string name) {
     this->name = name;
     this->previousLayer = nullptr;
     this->nextLayer = nullptr;
     for (int i = 0; i < nodes; i++) {
         // For each node, create a neuron
         auto node = std::make_shared<Node>();
+        node->threshold = thresholds[i];
         this->nodes.push_back(node);
     }
 }
 
-Dense::Dense(int nodes, Dense &inputLayer, std::vector<double> weights, std::string name) : Dense::Dense(nodes, name) {
+Dense::Dense(int nodes, Dense &inputLayer, std::vector<double> thresholds, std::vector<double> weights, std::string name) : Dense::Dense(nodes, thresholds, name) {
     // Check if neurons were constructed correctly
     assert(nodes == this->nodes.size());
+    assert(nodes == thresholds.size());
     
     // Create connections from the input layer
     Dense::connect(inputLayer, *this, weights);

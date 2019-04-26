@@ -19,7 +19,7 @@ OutSynapse::OutSynapse(Neuron &source): source(source) {
 
 void OutSynapse::sendSpike() {
     for (int i = 0; i < destination->destinations.size(); i++) {
-        destination->destinations[i]->destination.evaluatePotential(destination->destinations[i]->weight);
+        destination->destinations[i]->destination.increasePotential(destination->destinations[i]->weight);
     }
 }
 

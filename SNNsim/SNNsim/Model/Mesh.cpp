@@ -27,7 +27,7 @@ Mesh::Mesh(Layer &model): Mesh() {
             if (currentLayer->nextLayer == nullptr) {
                 // Save node as an output
                 auto currentNode = currentLayer->nodes[i];
-                cores[127].neurons.push_back(std::make_shared<OutputNeuron>());
+                cores[127].neurons.push_back(std::make_shared<OutputNeuron>(currentNode->threshold));
                 currentNode->neuron = cores[127].neurons.back();
                 outputs.push_back((std::dynamic_pointer_cast<OutputNeuron>(currentNode->neuron)));
                 continue;
@@ -37,7 +37,7 @@ Mesh::Mesh(Layer &model): Mesh() {
             auto currentNode = currentLayer->nodes[i];
             
             // Add neuron to the current layer's core
-            cores[layerCounter].neurons.push_back(std::make_shared<Neuron>());
+            cores[layerCounter].neurons.push_back(std::make_shared<Neuron>(currentNode->threshold));
             
             // Save a reference to the neuron in the node to create connections later
             currentNode->neuron = cores[layerCounter].neurons.back();
@@ -94,10 +94,19 @@ std::vector<float> Mesh::run(std::vector<SpikeTrain> spikeTrains) {
     // int i can be thought up as the current time step
     // int j selects the correct input neuron and corresponding spike train
     for (int i = 0; i < length; i++) {
+        // Send spike through first layer
         for (int j = 0; j < inputLayer->nodes.size(); j++) {
             if (spikeTrains[j].spikes[i] == 1) {
-                inputLayer->nodes[j]->neuron->evaluatePotential(1.0);
+                inputLayer->nodes[j]->neuron->increasePotential(1.0);
             }
+        }
+        
+        Layer *currentLayer = model;
+        while (currentLayer != nullptr) {
+            for (int j = 0; j < currentLayer->nodes.size(); j++) {
+                currentLayer->nodes[j]->neuron->evaluatePotential();
+            }
+            currentLayer = currentLayer->nextLayer;
         }
     }
    
@@ -105,7 +114,7 @@ std::vector<float> Mesh::run(std::vector<SpikeTrain> spikeTrains) {
     
     std::vector<float> outputValues;
     for (int i = 0; i < outputs.size(); i++) {
-        outputValues.push_back(outputs[i]->spikeCount / length);
+        outputValues.push_back(outputs[i]->spikeCount / (float)length);
     }
     
     return outputValues;
