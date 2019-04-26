@@ -17,12 +17,22 @@ Mesh::Mesh() {
 }
 
 Mesh::Mesh(Layer &model): Mesh() {
+    this->model = &model;
     Layer *currentLayer = &model;
     int layerCounter = 0; // Used to put each layer in Mesh.cores at index layerCounter
     
     // Iterate through each layer, creating neurons.
     while (currentLayer != nullptr) {
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
+            if (currentLayer->nextLayer == nullptr) {
+                // Save node as an output
+                auto currentNode = currentLayer->nodes[i];
+                cores[127].neurons.push_back(std::make_shared<OutputNeuron>());
+                currentNode->neuron = cores[127].neurons.back();
+                outputs.push_back((std::dynamic_pointer_cast<OutputNeuron>(currentNode->neuron)));
+                continue;
+            }
+            
             // Get current node
             auto currentNode = currentLayer->nodes[i];
             
@@ -31,7 +41,6 @@ Mesh::Mesh(Layer &model): Mesh() {
             
             // Save a reference to the neuron in the node to create connections later
             currentNode->neuron = cores[layerCounter].neurons.back();
-            int p = 0;
         }
         currentLayer = currentLayer->nextLayer;
         layerCounter++;
@@ -71,9 +80,35 @@ Mesh::Mesh(Layer &model): Mesh() {
     }
 }
 
-std::vector<float> Mesh::run(std::vector<float> inputs) {
+std::vector<float> Mesh::run(std::vector<SpikeTrain> spikeTrains) {
+    Layer *inputLayer = model;
+    assert(spikeTrains.size() > 0);
+    assert(inputLayer->nodes.size() == spikeTrains.size());
     
-    return std::vector<float>();
+    int length = (int)spikeTrains[0].spikes.size();
+    assert(length > 0);
+    
+    // TODO: Find the maximum spike train length. Pad any shorter trains with 0's
+    
+    // For each spike in the train, for each input neuron, if there is a spike, evaluate it
+    // int i can be thought up as the current time step
+    // int j selects the correct input neuron and corresponding spike train
+    for (int i = 0; i < length; i++) {
+        for (int j = 0; j < inputLayer->nodes.size(); j++) {
+            if (spikeTrains[j].spikes[i] == 1) {
+                inputLayer->nodes[j]->neuron->evaluatePotential(1.0);
+            }
+        }
+    }
+   
+    // After iterating, the final output node can be evaluated to find the output
+    
+    std::vector<float> outputValues;
+    for (int i = 0; i < outputs.size(); i++) {
+        outputValues.push_back(outputs[i]->spikeCount / length);
+    }
+    
+    return outputValues;
 }
 
 void Mesh::printMesh() {

@@ -8,5 +8,7 @@
 
 #include "SpikeTrain.hpp"
 
-
+SpikeTrain::SpikeTrain(std::vector<bool> spikes) : spikes(spikes) {
+    
+}
 

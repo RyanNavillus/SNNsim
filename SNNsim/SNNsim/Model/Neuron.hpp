@@ -21,17 +21,16 @@ class Neuron {
 public:
     std::string name;
     int threshold;
+    int potential;
     static int neuronCount;
     std::vector<std::shared_ptr<InSynapse>> inputSynapses;
     std::vector<std::shared_ptr<OutSynapse>> outputSynapses;
-    
+    // TODO: Add treshold to initializer
     Neuron();   // Create empty neuron. Layer construction will handle weights
     void evaluatePotential(float weight);
     void addInput(Neuron &input);
     void printNeuron();
-
-private:
-    void spike();
+    virtual void spike();
 };
 
 #endif /* Neuron_hpp */

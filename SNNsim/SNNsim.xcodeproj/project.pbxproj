@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E16CFE92273342E0033E8EA /* OutputNeuron.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6E16CFE72273342E0033E8EA /* OutputNeuron.cpp */; };
 		6EAEEE1A2223991400E7D2D6 /* Layer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEEE182223991400E7D2D6 /* Layer.cpp */; };
 		6EAEEE1D22239AE600E7D2D6 /* Dense.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EAEEE1B22239AE600E7D2D6 /* Dense.cpp */; };
 		6EBA6B74221F2D9700B4A960 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6EBA6B73221F2D9700B4A960 /* main.cpp */; };
@@ -37,6 +38,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		6E16CFE72273342E0033E8EA /* OutputNeuron.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = OutputNeuron.cpp; sourceTree = "<group>"; };
+		6E16CFE82273342E0033E8EA /* OutputNeuron.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = OutputNeuron.hpp; sourceTree = "<group>"; };
 		6EAEEE182223991400E7D2D6 /* Layer.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Layer.cpp; sourceTree = "<group>"; };
 		6EAEEE192223991400E7D2D6 /* Layer.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = Layer.hpp; sourceTree = "<group>"; };
 		6EAEEE1B22239AE600E7D2D6 /* Dense.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Dense.cpp; sourceTree = "<group>"; };
@@ -85,10 +88,10 @@
 		6EAEEE17222398F300E7D2D6 /* Layers */ = {
 			isa = PBXGroup;
 			children = (
-				6EAEEE182223991400E7D2D6 /* Layer.cpp */,
-				6EAEEE192223991400E7D2D6 /* Layer.hpp */,
 				6EAEEE1B22239AE600E7D2D6 /* Dense.cpp */,
 				6EAEEE1C22239AE600E7D2D6 /* Dense.hpp */,
+				6EAEEE182223991400E7D2D6 /* Layer.cpp */,
+				6EAEEE192223991400E7D2D6 /* Layer.hpp */,
 				6EF82913225748FC006D0597 /* Node.cpp */,
 				6EF82914225748FC006D0597 /* Node.hpp */,
 			);
@@ -114,13 +117,13 @@
 		6EBA6B72221F2D9700B4A960 /* SNNsim */ = {
 			isa = PBXGroup;
 			children = (
-				6EBA6B73221F2D9700B4A960 /* main.cpp */,
-				6EBA6B86221F2E2200B4A960 /* Parser.cpp */,
-				6EBA6B87221F2E2200B4A960 /* Parser.hpp */,
-				6EBA6B98221F5A7100B4A960 /* NetworkFile.cpp */,
-				6EBA6B99221F5A7100B4A960 /* NetworkFile.hpp */,
 				6EBA6B94221F370200B4A960 /* EnergyTracker.cpp */,
 				6EBA6B95221F370200B4A960 /* EnergyTracker.hpp */,
+				6EBA6B73221F2D9700B4A960 /* main.cpp */,
+				6EBA6B98221F5A7100B4A960 /* NetworkFile.cpp */,
+				6EBA6B99221F5A7100B4A960 /* NetworkFile.hpp */,
+				6EBA6B86221F2E2200B4A960 /* Parser.cpp */,
+				6EBA6B87221F2E2200B4A960 /* Parser.hpp */,
 				6EBA6B93221F36F000B4A960 /* Model */,
 				6EBA6B9B221FE09300B4A960 /* Samples */,
 			);
@@ -130,23 +133,25 @@
 		6EBA6B93221F36F000B4A960 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6EAEEE17222398F300E7D2D6 /* Layers */,
-				6EBA6B7A221F2DFB00B4A960 /* Mesh.cpp */,
-				6EBA6B7B221F2DFB00B4A960 /* Mesh.hpp */,
-				6EBA6B7D221F2E0400B4A960 /* Core.cpp */,
-				6EBA6B7E221F2E0400B4A960 /* Core.hpp */,
-				6EBA6B80221F2E1300B4A960 /* Neuron.cpp */,
-				6EBA6B81221F2E1300B4A960 /* Neuron.hpp */,
-				6EBA6B83221F2E1C00B4A960 /* Synapse.cpp */,
-				6EBA6B84221F2E1C00B4A960 /* Synapse.hpp */,
 				6EBA6B8F221F361C00B4A960 /* Axon.cpp */,
 				6EBA6B90221F361C00B4A960 /* Axon.hpp */,
+				6EBA6B7D221F2E0400B4A960 /* Core.cpp */,
+				6EBA6B7E221F2E0400B4A960 /* Core.hpp */,
 				6EBA6B89221F2E2C00B4A960 /* InSynapse.cpp */,
 				6EBA6B8A221F2E2C00B4A960 /* InSynapse.hpp */,
+				6EBA6B7A221F2DFB00B4A960 /* Mesh.cpp */,
+				6EBA6B7B221F2DFB00B4A960 /* Mesh.hpp */,
+				6EBA6B80221F2E1300B4A960 /* Neuron.cpp */,
+				6EBA6B81221F2E1300B4A960 /* Neuron.hpp */,
+				6E16CFE72273342E0033E8EA /* OutputNeuron.cpp */,
+				6E16CFE82273342E0033E8EA /* OutputNeuron.hpp */,
 				6EBA6B8C221F2E3700B4A960 /* OutSynapse.cpp */,
 				6EBA6B8D221F2E3800B4A960 /* OutSynapse.hpp */,
 				6EBA6B9D221FE28300B4A960 /* SpikeTrain.cpp */,
 				6EBA6B9E221FE28300B4A960 /* SpikeTrain.hpp */,
+				6EBA6B83221F2E1C00B4A960 /* Synapse.cpp */,
+				6EBA6B84221F2E1C00B4A960 /* Synapse.hpp */,
+				6EAEEE17222398F300E7D2D6 /* Layers */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -154,8 +159,8 @@
 		6EBA6B9B221FE09300B4A960 /* Samples */ = {
 			isa = PBXGroup;
 			children = (
-				6EBA6B9C221FE0C200B4A960 /* XORNetwork.txt */,
 				6EBA6BA0221FE5E000B4A960 /* Network Format.md */,
+				6EBA6B9C221FE0C200B4A960 /* XORNetwork.txt */,
 			);
 			path = Samples;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 				6EBA6B9F221FE28300B4A960 /* SpikeTrain.cpp in Sources */,
 				6EBA6B7C221F2DFB00B4A960 /* Mesh.cpp in Sources */,
 				6EBA6B82221F2E1300B4A960 /* Neuron.cpp in Sources */,
+				6E16CFE92273342E0033E8EA /* OutputNeuron.cpp in Sources */,
 				6EF82915225748FC006D0597 /* Node.cpp in Sources */,
 				6EAEEE1A2223991400E7D2D6 /* Layer.cpp in Sources */,
 				6EBA6B88221F2E2200B4A960 /* Parser.cpp in Sources */,

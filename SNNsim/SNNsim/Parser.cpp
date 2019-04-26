@@ -10,6 +10,7 @@
 #include "Parser.hpp"
 #include <string>
 #include "Model/Layers/Dense.hpp"
+#include "Model/SpikeTrain.hpp"
 
 /*Mesh Parser::parse(NetworkFile file) {
     return Mesh(); // Placeholder
@@ -31,7 +32,17 @@ Mesh Parser::createXORMesh() {
     Mesh mesh = Mesh(L1);
     std::cout << "\n";
     mesh.printMesh();
-    std::vector<float> inputs = {1,2};
-    mesh.run(inputs);
+    
+    std::vector<SpikeTrain> spikeTrain;
+    spikeTrain = {
+        SpikeTrain({0}),
+        SpikeTrain({1})
+    };
+    
+    std::vector<float> outputs = mesh.run(spikeTrain);
+    for (int i = 0; i < outputs.size(); i++) {
+        std::cout << outputs[i] << ", " << "\n";
+    }
+    
     return mesh;
 }

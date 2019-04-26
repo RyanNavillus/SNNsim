@@ -9,14 +9,12 @@
 #include "Neuron.hpp"
 #include <iostream>
 
-int potential;
-int WPLACEHOLDER = 0;
-int SYNAPSESPIKEPLACEHOLDER = 1;
-
 int Neuron::neuronCount = 0;
 
 Neuron::Neuron() {
     neuronCount++;
+    threshold = 1;
+    potential = 0;
     this->name = "Neuron " + std::to_string(neuronCount);
 }
 
@@ -34,7 +32,7 @@ void Neuron::addInput(Neuron &input) {
 void Neuron::evaluatePotential(float weight) {
     // TODO: Implement potential
     potential += weight;
-    if (potential > threshold) {
+    if (potential >= threshold) {
         spike();
         potential = 0;
     }
