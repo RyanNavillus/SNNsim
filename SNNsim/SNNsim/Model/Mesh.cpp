@@ -73,6 +73,8 @@ Mesh::Mesh(Layer &model): Mesh() {
             
             currentNode.neuron->outputSynapses.push_back(axonInput);
             
+            // Create an axon to connect input neuron to it's one or many output neurons
+            // by attaching outputSynapses to inputSynapses.
             Axon::connect(axonInput, outputs);
 
         }
