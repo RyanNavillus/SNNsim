@@ -19,36 +19,57 @@
 Mesh Parser::parse(NetworkFile file) {
     // Testing
     // TODO: Delete
-    return createXORMesh();
+    return createTestMesh();
 }
 
-Mesh Parser::createXORMesh() {
-    Dense L1 = Dense(2, {0,0}, "input");
-    Dense L2 = Dense(2, L1, {1.9,0}, {1,1,1,1}, "hidden");
-    Dense L3 = Dense(1, L2, {0}, {-1,1}, "output");
+Mesh Parser::createTestMesh() {
+    Dense XOR1 = Dense(2, {0,0}, "input");
+    Dense XOR2 = Dense(2, XOR1, {1.9,0}, {1,1,1,1}, "hidden");
+    Dense XOR3 = Dense(1, XOR2, {0}, {-1,1}, "output");
     
-    Dense ANDNOT1 = Dense(2, {0,0}, "input");
-    Dense ANDNOT2 = Dense(1, ANDNOT1, {1}, {2,-1}, "X1 and not X2");
+    std::cout << "-----   Model Description   -----\n";
+    
+    XOR1.printNetwork();
+    Mesh mesh = Mesh(XOR1);
+    std::cout << "\n\n\n-----   Mesh Description   -----\n";
+    mesh.printMesh();
+    std::cout << "\n";
     
     Dense AND1 = Dense(2, {0,0}, "input");
     Dense AND2 = Dense(1, AND1, {1}, {1,1}, "X1 and X2");
     
     Dense OR1 = Dense(2, {0,0}, "input");
-    Dense OR2 = Dense(1, OR1, {2}, {2,2}, "X1 or X2");
+    Dense OR2 = Dense(1, OR1, {0}, {1,1}, "X1 or X2");
     
-    Dense XOR1 = Dense(2, {0,0}, "input");
-    Dense XOR2 = Dense(2, XOR1, {0,0}, {2,-1,-1,2}, "hidden");
-    Dense XOR3 = Dense(1, XOR2, {0}, {2,2}, "X1 xor X2");
+    Dense ANDNOT1 = Dense(2, {0,0}, "input");
+    Dense ANDNOT2 = Dense(1, ANDNOT1, {1}, {2,-1}, "X1 and not X2");
     
-    L1.printNetwork();
+    std::cout << "\n\n\n-----   Logic Gate Network Tests   -----\n";
     
-    Mesh mesh = Mesh(L1);
+    std::cout << "X1 AND X2\n";
+    Parser::testModel(AND1);
     std::cout << "\n";
-    mesh.printMesh();
+
+    std::cout << "X1 OR X2\n";
+    Parser::testModel(OR1);
     std::cout << "\n";
-    
+
+    std::cout << "X1 AND NOT X2\n";
+    Parser::testModel(ANDNOT1);
+    std::cout << "\n";
+
+    std::cout << "X1 XOR X2\n";
+    Parser::testModel(XOR1);
+    std::cout << "\n";
+
+
+    return mesh;
+}
+
+void Parser::testModel(Layer model) {
+    std::cout << "X1,X2\n";
     // Test 00
-    mesh = Mesh(L1);
+    Mesh mesh = Mesh(model);
     std::vector<SpikeTrain> spikeTrain;
     spikeTrain = {
         SpikeTrain({0,0,0,0,0,0,0,0}),
@@ -66,7 +87,7 @@ Mesh Parser::createXORMesh() {
     std::cout << "}\n";
     
     // Test 10
-    mesh = Mesh(L1);
+    mesh = Mesh(model);
     spikeTrain = {
         SpikeTrain({1,1,1,1,1,1,1,1}),
         SpikeTrain({0,0,0,0,0,0,0,0})
@@ -83,7 +104,7 @@ Mesh Parser::createXORMesh() {
     std::cout << "}\n";
     
     // Test 01
-    mesh = Mesh(L1);
+    mesh = Mesh(model);
     spikeTrain = {
         SpikeTrain({0,0,0,0,0,0,0,0}),
         SpikeTrain({1,1,1,1,1,1,1,1})
@@ -100,7 +121,7 @@ Mesh Parser::createXORMesh() {
     std::cout << "}\n";
     
     // Test 11
-    mesh = Mesh(L1);
+    mesh = Mesh(model);
     spikeTrain = {
         SpikeTrain({1,1,1,1,1,1,1,1}),
         SpikeTrain({1,1,1,1,1,1,1,1})
@@ -115,8 +136,5 @@ Mesh Parser::createXORMesh() {
         }
     }
     std::cout << "}\n";
-
-    return mesh;
 }
-
 

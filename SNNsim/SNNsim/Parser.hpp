@@ -17,7 +17,8 @@ class Parser {
 public:
     static Mesh parse(NetworkFile file);
 private:
-    static Mesh createXORMesh();
+    static Mesh createTestMesh();
+    static void testModel(Layer model);
 };
 
 #endif /* Parser_hpp */

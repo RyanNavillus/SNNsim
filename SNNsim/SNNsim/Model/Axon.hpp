@@ -31,6 +31,7 @@ public:
     
     Axon();
     Axon(std::shared_ptr<OutSynapse> source, std::vector<std::shared_ptr<InSynapse>> destinations = std::vector<std::shared_ptr<InSynapse>>());
+    static void connect(std::shared_ptr<OutSynapse> source, std::vector<std::shared_ptr<InSynapse>> destinations);
 };
 
 #endif /* Axon_hpp */

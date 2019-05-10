@@ -53,7 +53,7 @@ void Neuron::spike() {
 }
 
 void Neuron::printNeuron() {
-    std::cout << "\t" << name << ":\n";
+    std::cout << "\t" << name << " {" << threshold << "}" <<":\n";
     for (int i = 0; i < outputSynapses.size(); i++) {
         OutSynapse synapse = *outputSynapses[i];
         for (int j = 0; j < synapse.destination->destinations.size(); j++) {

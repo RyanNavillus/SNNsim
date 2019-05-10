@@ -73,8 +73,8 @@ Mesh::Mesh(Layer &model): Mesh() {
             
             currentNode.neuron->outputSynapses.push_back(axonInput);
             
-            // This code has important side effects. It should be rewritten
-            Axon *axon = new Axon(axonInput, outputs);
+            Axon::connect(axonInput, outputs);
+
         }
         currentLayer = currentLayer->nextLayer;
     }
