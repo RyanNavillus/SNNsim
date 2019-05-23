@@ -42,7 +42,7 @@ void Neuron::evaluatePotential() {
 }
 
 void Neuron::leak() {
-    potential -= 1;
+    potential -= 0.9;
 }
 
 void Neuron::spike() {

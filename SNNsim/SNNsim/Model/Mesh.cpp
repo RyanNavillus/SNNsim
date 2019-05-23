@@ -24,11 +24,15 @@ Mesh::Mesh(Layer &model): Mesh() {
     // Iterate through each layer, creating neurons.
     while (currentLayer != nullptr) {
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
+            // If this is the last layer, create a special output node
             if (currentLayer->nextLayer == nullptr) {
                 // Save node as an output
                 auto currentNode = currentLayer->nodes[i];
-                cores[127].neurons.push_back(std::make_shared<OutputNeuron>(currentNode->threshold));
-                currentNode->neuron = cores[127].neurons.back();
+                std::shared_ptr<OutputNeuron> newOutputNeuron = std::make_shared<OutputNeuron>(currentNode->threshold);
+                
+                // Add output node to the last core
+                cores[127].addNeuron(newOutputNeuron);
+                currentNode->neuron = newOutputNeuron;
                 outputs.push_back((std::dynamic_pointer_cast<OutputNeuron>(currentNode->neuron)));
                 continue;
             }
@@ -37,10 +41,10 @@ Mesh::Mesh(Layer &model): Mesh() {
             auto currentNode = currentLayer->nodes[i];
             
             // Add neuron to the current layer's core
-            cores[layerCounter].neurons.push_back(std::make_shared<Neuron>(currentNode->threshold));
-            
+            std::shared_ptr<Neuron> newNeuron = std::make_shared<OutputNeuron>(currentNode->threshold);
+            cores[layerCounter].addNeuron(newNeuron);
             // Save a reference to the neuron in the node to create connections later
-            currentNode->neuron = cores[layerCounter].neurons.back();
+            currentNode->neuron = newNeuron;
         }
         currentLayer = currentLayer->nextLayer;
         layerCounter++;

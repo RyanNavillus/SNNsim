@@ -15,6 +15,8 @@ Core::Core() {
     this->name = "Core " + std::to_string(coreCount);
 }
 
+
+
 void Core::printCore() {
     if (neurons.size() == 0) {
         return;
@@ -25,3 +27,13 @@ void Core::printCore() {
         neurons[i]->printNeuron();
     }
 }
+
+void Core::addNeuron(std::shared_ptr<Neuron> neuron) {
+    //assert(neurons.size() < 1024);
+    
+    neurons.push_back(neuron);
+    if (neurons.size() > 1024) {
+        std::cout << name << ": The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\n";
+    }
+}
+
