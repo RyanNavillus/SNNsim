@@ -30,8 +30,8 @@ void Core::printCore() {
 
 void Core::addNeuron(std::shared_ptr<Neuron> neuron) {
     //assert(neurons.size() < 1024);
-    
     neurons.push_back(neuron);
+    neuron->core = std::make_shared<Core>(*this);
     if (neurons.size() > 1024) {
         std::cout << name << ": The total number of neurons assigned to any core may not exceed 1,024 (Ncx).\n";
     }

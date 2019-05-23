@@ -24,6 +24,7 @@ Mesh::Mesh(Layer &model): Mesh() {
     // Iterate through each layer, creating neurons.
     while (currentLayer != nullptr) {
         for (int i = 0; i < currentLayer->nodes.size(); i++) {
+            
             // If this is the last layer, create a special output node
             if (currentLayer->nextLayer == nullptr) {
                 // Save node as an output
@@ -84,6 +85,8 @@ Mesh::Mesh(Layer &model): Mesh() {
         }
         currentLayer = currentLayer->nextLayer;
     }
+    
+    
 }
 
 std::vector<float> Mesh::run(std::vector<SpikeTrain> spikeTrains) {

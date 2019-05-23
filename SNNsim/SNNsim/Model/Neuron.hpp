@@ -16,16 +16,19 @@
 
 class InSynapse;
 class OutSynapse;
+class Core;
 
 class Neuron {
 public:
+    static int neuronCount;
+
     std::string name;
     float threshold;
     float potential;
-    static int neuronCount;
+    std::shared_ptr<Core> core;
     std::vector<std::shared_ptr<InSynapse>> inputSynapses;
     std::vector<std::shared_ptr<OutSynapse>> outputSynapses;
-    // TODO: Add treshold to initializer
+
     Neuron(float threshold = 0);   // Create empty neuron. Layer construction will handle weights
     void increasePotential(float weight);
     void evaluatePotential();
